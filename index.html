@@ -30,7 +30,6 @@
       min-height: 100vh;
     }
 
-    /* ── ANIMATED BACKGROUND ── */
     .bg-canvas {
       position: fixed;
       inset: 0;
@@ -54,7 +53,6 @@
       z-index: 0;
     }
 
-    /* ── LAYOUT ── */
     main {
       position: relative;
       z-index: 1;
@@ -67,7 +65,7 @@
       gap: 72px;
     }
 
-    /* ── HERO ── */
+    /* HERO */
     .hero {
       display: flex;
       flex-direction: column;
@@ -75,8 +73,6 @@
       gap: 28px;
       text-align: center;
     }
-
-    @keyframes spin { to { transform: rotate(360deg); } }
 
     .hero-name {
       font-family: 'Syne', sans-serif;
@@ -120,7 +116,7 @@
     }
     .hero-bio strong { color: var(--text); }
 
-    /* ── SECTION TITLE ── */
+    /* SECTION */
     .section-label {
       font-family: 'Syne', sans-serif;
       font-size: 0.7rem;
@@ -139,81 +135,183 @@
       color: #fff;
     }
 
-    /* ── VIDEO GRID ── */
+    /* VIDEO GRID */
     .video-section { width: 100%; }
-    .video-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 24px;
-    }
+    .video-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
 
     .video-card {
-      position: relative;
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid rgba(0,201,200,0.15);
       background: var(--card);
-      cursor: pointer;
       transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-      aspect-ratio: 16/9;
       box-shadow: 0 4px 32px rgba(0,0,0,0.4);
-    }
-    .video-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 20px;
-      background: linear-gradient(135deg, rgba(0,201,200,0.06) 0%, transparent 60%);
-      pointer-events: none;
-      z-index: 1;
-      transition: opacity 0.35s;
-      opacity: 0;
     }
     .video-card:hover {
       transform: translateY(-6px) scale(1.01);
       box-shadow: 0 28px 80px rgba(0,201,200,0.22), 0 0 0 1px rgba(0,201,200,0.35);
       border-color: rgba(0,201,200,0.4);
     }
-    .video-card:hover::before { opacity: 1; }
-    .video-card iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
+
+    /* video context */
+    .video-inner { position: relative; aspect-ratio: 16/9; }
+    .video-inner iframe { width: 100%; height: 100%; border: none; display: block; }
+    .video-context {
+      padding: 16px 20px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .video-context-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .video-context-desc {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .video-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+    .video-tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 100px;
+      border: 1px solid rgba(0,201,200,0.2);
+      color: var(--teal);
+      background: rgba(0,201,200,0.05);
     }
 
-    /* ── SHORTS GRID ── */
+    /* SHORTS */
     .shorts-section { width: 100%; }
-    .shorts-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
+    .shorts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     @media (max-width: 480px) { .shorts-grid { grid-template-columns: 1fr; } }
 
-    .short-card {
-      position: relative;
+    .short-wrap {
       border-radius: 20px;
       overflow: hidden;
       border: 1px solid rgba(0,201,200,0.15);
       background: var(--card);
       transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
-      aspect-ratio: 9/16;
       box-shadow: 0 4px 32px rgba(0,0,0,0.4);
     }
-    .short-card:hover {
+    .short-wrap:hover {
       transform: translateY(-6px) scale(1.01);
       box-shadow: 0 28px 80px rgba(0,201,200,0.22), 0 0 0 1px rgba(0,201,200,0.35);
       border-color: rgba(0,201,200,0.4);
     }
-    .short-card iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-      display: block;
+    .short-inner { aspect-ratio: 9/16; }
+    .short-inner iframe { width: 100%; height: 100%; border: none; display: block; }
+    .short-context {
+      padding: 12px 16px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .short-context-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+    .short-context-desc {
+      font-size: 0.75rem;
+      color: var(--muted);
+      line-height: 1.5;
     }
 
-    /* ── CONTACT ── */
+    /* HOW I WORK */
+    .process-section { width: 100%; }
+    .process-steps {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .process-step {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+    .process-step:last-child { border-bottom: none; }
+    .process-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--teal);
+      min-width: 28px;
+      padding-top: 3px;
+    }
+    .process-content {}
+    .process-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+    .process-desc {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .process-detail {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      font-size: 0.75rem;
+      color: var(--teal);
+      border: 1px solid rgba(0,201,200,0.2);
+      border-radius: 100px;
+      padding: 3px 10px;
+      background: rgba(0,201,200,0.04);
+    }
+
+    /* TESTIMONIALS */
+    .testimonials-section { width: 100%; }
+    .testimonials-empty {
+      border: 1px dashed rgba(0,201,200,0.2);
+      border-radius: 20px;
+      padding: 48px 28px;
+      text-align: center;
+      background: rgba(0,201,200,0.02);
+    }
+    .testimonials-empty-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(0,201,200,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .testimonials-empty h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .testimonials-empty p {
+      font-size: 0.85rem;
+      color: var(--muted);
+      max-width: 340px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* CONTACT */
     .contact-section { width: 100%; }
     .contact-grid {
       display: grid;
@@ -236,24 +334,12 @@
       font-weight: 500;
       transition: all 0.25s ease;
       cursor: pointer;
-      position: relative;
-      overflow: hidden;
-    }
-    .contact-btn::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, transparent, rgba(255,255,255,0.03));
-      opacity: 0;
-      transition: opacity 0.25s;
     }
     .contact-btn:hover { border-color: rgba(0,201,200,0.35); transform: translateY(-2px); color: #fff; }
-    .contact-btn:hover::before { opacity: 1; }
     .contact-btn svg { flex-shrink: 0; }
     .contact-btn .btn-label { font-size: 0.75rem; color: var(--muted); display: block; }
     .contact-btn .btn-value { color: inherit; font-weight: 500; }
 
-    /* Discord copy toast */
     .toast {
       position: fixed;
       bottom: 28px;
@@ -272,18 +358,15 @@
     }
     .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-    /* ── FADE-IN ANIMATIONS ── */
+    /* FADE UP */
     .fade-up {
       opacity: 0;
       transform: translateY(30px);
       transition: opacity 0.7s ease, transform 0.7s ease;
     }
-    .fade-up.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .fade-up.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── SKILLS ── */
+    /* SKILLS */
     .skills-section { width: 100%; }
     .skills-grid {
       display: grid;
@@ -300,6 +383,11 @@
       transition: border-color 0.25s, transform 0.25s;
     }
     .skill-card:hover { border-color: rgba(0,201,200,0.35); transform: translateY(-3px); }
+    .skill-card.highlight {
+      border-color: rgba(0,201,200,0.3);
+      background: rgba(0,201,200,0.04);
+    }
+    .skill-card.highlight .skill-name { color: var(--teal); }
 
     .skill-header {
       display: flex;
@@ -317,9 +405,22 @@
       flex-shrink: 0;
     }
     .skill-icon.premiere { background: rgba(234,78,246,0.12); }
-    .skill-icon.capcut   { background: rgba(0,201,200,0.10); }
     .skill-icon.motion   { background: rgba(255,180,50,0.10); }
     .skill-icon.color    { background: rgba(80,180,255,0.10); }
+    .skill-icon.retention { background: rgba(0,201,200,0.10); }
+
+    .skill-badge {
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal);
+      background: rgba(0,201,200,0.1);
+      border: 1px solid rgba(0,201,200,0.2);
+      border-radius: 100px;
+      padding: 2px 7px;
+      margin-left: auto;
+    }
 
     .skill-name {
       font-family: 'Syne', sans-serif;
@@ -333,7 +434,7 @@
       line-height: 1.55;
     }
 
-    /* ── CTA BLOCK ── */
+    /* CTA */
     .cta-block {
       width: 100%;
       text-align: center;
@@ -370,10 +471,7 @@
       transition: all 0.25s ease;
       font-family: 'Inter', sans-serif;
     }
-    .cta-link.primary {
-      background: var(--teal);
-      color: #000;
-    }
+    .cta-link.primary { background: var(--teal); color: #000; }
     .cta-link.primary:hover { background: #00e0df; transform: translateY(-2px); }
     .cta-link.secondary {
       background: transparent;
@@ -382,7 +480,7 @@
     }
     .cta-link.secondary:hover { border-color: rgba(0,201,200,0.4); color: #fff; transform: translateY(-2px); }
 
-    /* ── LANGUAGE SELECTOR (ENHANCED) ── */
+    /* LANGUAGE OVERLAY */
     .lang-overlay {
       position: fixed;
       inset: 0;
@@ -395,13 +493,8 @@
       transition: opacity 0.7s ease, visibility 0.7s ease;
       overflow: hidden;
     }
-    .lang-overlay.hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
+    .lang-overlay.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
-    /* Animated mesh / glow */
     .lang-bg {
       position: absolute;
       inset: 0;
@@ -411,12 +504,8 @@
       animation: langPulse 6s ease-in-out infinite alternate;
       pointer-events: none;
     }
-    @keyframes langPulse {
-      from { opacity: 0.6; transform: scale(1); }
-      to   { opacity: 1;   transform: scale(1.06); }
-    }
+    @keyframes langPulse { from { opacity: 0.6; transform: scale(1); } to { opacity: 1; transform: scale(1.06); } }
 
-    /* Floating grid lines */
     .lang-grid {
       position: absolute;
       inset: 0;
@@ -427,18 +516,9 @@
       animation: gridDrift 20s linear infinite;
       pointer-events: none;
     }
-    @keyframes gridDrift {
-      from { background-position: 0 0; }
-      to   { background-position: 60px 60px; }
-    }
+    @keyframes gridDrift { from { background-position: 0 0; } to { background-position: 60px 60px; } }
 
-    /* Floating code snippets in background */
-    .lang-floaters {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
+    .lang-floaters { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
     .floater {
       position: absolute;
       font-family: 'Syne', monospace;
@@ -456,16 +536,8 @@
       to   { transform: translateY(-15vh) rotate(-4deg); opacity: 0; }
     }
 
-    /* Orbiting particles canvas */
-    #langCanvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-    }
+    #langCanvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
 
-    /* Main content */
     .lang-content {
       position: relative;
       z-index: 1;
@@ -475,16 +547,9 @@
       gap: 36px;
       animation: langEntrance 0.9s cubic-bezier(0.16,1,0.3,1) both;
     }
-    @keyframes langEntrance {
-      from { opacity: 0; transform: translateY(32px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
+    @keyframes langEntrance { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* Glowing name block */
-    .lang-wordmark {
-      text-align: center;
-      position: relative;
-    }
+    .lang-wordmark { text-align: center; position: relative; }
     .lang-wordmark::after {
       content: '';
       position: absolute;
@@ -505,8 +570,6 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
       line-height: 1;
-      text-shadow: none;
-      position: relative;
     }
     .lang-tagline {
       font-size: 0.8rem;
@@ -515,8 +578,6 @@
       color: var(--muted);
       margin-top: 18px;
     }
-
-    /* Prompt */
     .lang-prompt {
       font-size: 0.75rem;
       letter-spacing: 0.18em;
@@ -525,11 +586,7 @@
       margin-bottom: -20px;
     }
 
-    /* Language buttons */
-    .lang-btns {
-      display: flex;
-      gap: 14px;
-    }
+    .lang-btns { display: flex; gap: 14px; }
     .lang-btn {
       position: relative;
       display: flex;
@@ -557,30 +614,12 @@
       opacity: 0;
       transition: opacity 0.3s;
     }
-    .lang-btn:hover {
-      border-color: rgba(0,201,200,0.5);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 50px rgba(0,201,200,0.2);
-    }
+    .lang-btn:hover { border-color: rgba(0,201,200,0.5); transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,201,200,0.2); }
     .lang-btn:hover::before { opacity: 1; }
-    .lang-btn .flag {
-      font-size: 2.2rem;
-      position: relative;
-      filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
-      line-height: 1;
-    }
+    .lang-btn .flag { font-size: 2.2rem; position: relative; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5)); line-height: 1; }
     .lang-btn .btn-text { position: relative; font-size: 0.95rem; }
-    .lang-btn .btn-sub {
-      position: relative;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--muted);
-      font-family: 'Inter', sans-serif;
-      font-weight: 400;
-    }
+    .lang-btn .btn-sub { position: relative; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); font-family: 'Inter', sans-serif; font-weight: 400; }
 
-    /* lang-switch button always visible */
     .lang-switch {
       position: fixed;
       top: 18px;
@@ -604,7 +643,6 @@
     .lang-switch:hover { border-color: rgba(0,201,200,0.4); color: var(--teal); }
     .lang-switch .flag-sm { font-size: 1rem; }
 
-    /* ── FOOTER ── */
     footer {
       position: relative;
       z-index: 1;
@@ -617,24 +655,18 @@
 </head>
 <body>
 
-<!-- ══ LANGUAGE OVERLAY ══ -->
+<!-- LANGUAGE OVERLAY -->
 <div class="lang-overlay" id="langOverlay">
   <div class="lang-bg"></div>
   <div class="lang-grid"></div>
   <canvas id="langCanvas"></canvas>
-
-  <!-- Floating text snippets -->
   <div class="lang-floaters" id="langFloaters"></div>
-
   <div class="lang-content">
-
     <div class="lang-wordmark">
       <div class="lang-title">Leandro</div>
       <div class="lang-tagline">Video Editor</div>
     </div>
-
     <div class="lang-prompt" id="langPrompt">Choose your language</div>
-
     <div class="lang-btns">
       <button class="lang-btn" onclick="setLang('en')">
         <span class="flag">🇺🇸</span>
@@ -647,11 +679,9 @@
         <span class="btn-sub">Continuar em PT</span>
       </button>
     </div>
-
   </div>
 </div>
 
-<!-- ══ LANG SWITCH BUTTON ══ -->
 <button class="lang-switch" id="langSwitch" onclick="openLang()">
   <span class="flag-sm" id="currentFlag">🇺🇸</span>
   <span id="currentLangLabel">EN</span>
@@ -671,36 +701,51 @@
       </div>
       <h1 class="hero-name" style="margin-top:16px;">Leandro</h1>
     </div>
-
     <p class="hero-bio" id="heroBio">
-      Professional <strong>video editor</strong> specialized in dynamic cuts, motion graphics, and cinematic storytelling.<br/>
-      Bringing your content to the next level — one frame at a time.
+      Gaming video editor focused on <strong>retention</strong> — every cut, every opening, every transition built to keep your audience watching until the last second.
     </p>
   </section>
 
-  <!-- WORK -->
+  <!-- PORTFOLIO -->
   <section class="video-section fade-up">
     <p class="section-label" id="portfolioLabel">Portfolio</p>
     <h2 class="section-title" id="portfolioTitle">What I can do</h2>
     <div class="video-grid">
+
       <div class="video-card">
-        <iframe
-          src="https://www.youtube.com/embed/CMhT_SbA5mc"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          loading="lazy"
-          title="Video example 1"
-        ></iframe>
+        <div class="video-inner">
+          <iframe src="https://www.youtube.com/embed/CMhT_SbA5mc"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy" title="Video 1"></iframe>
+        </div>
+        <div class="video-context">
+          <div class="video-context-title" id="v1title">Gaming Edit — Dynamic Opening</div>
+          <div class="video-context-desc" id="v1desc">Fast-paced cuts synced to the beat, designed to hook viewers in the first 30 seconds. Focus on energy and retention through the entire video.</div>
+          <div class="video-tags">
+            <span class="video-tag">Premiere Pro</span>
+            <span class="video-tag" id="v1tag1">Gaming</span>
+            <span class="video-tag" id="v1tag2">Retention</span>
+          </div>
+        </div>
       </div>
+
       <div class="video-card">
-        <iframe
-          src="https://www.youtube.com/embed/kH8bkytBywE"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          loading="lazy"
-          title="Video example 2"
-        ></iframe>
+        <div class="video-inner">
+          <iframe src="https://www.youtube.com/embed/kH8bkytBywE"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy" title="Video 2"></iframe>
+        </div>
+        <div class="video-context">
+          <div class="video-context-title" id="v2title">Cinematic Gaming Highlights</div>
+          <div class="video-context-desc" id="v2desc">Highlight reel with cinematic color grading and custom transitions. Built to feel like a movie, not just a clip compilation.</div>
+          <div class="video-tags">
+            <span class="video-tag">Premiere Pro</span>
+            <span class="video-tag" id="v2tag1">Gaming</span>
+            <span class="video-tag" id="v2tag2">Color Grading</span>
+          </div>
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -709,24 +754,81 @@
     <p class="section-label" id="shortsLabel">Short-form</p>
     <h2 class="section-title" id="shortsTitle">YouTube Shorts</h2>
     <div class="shorts-grid">
-      <div class="short-card">
-        <iframe
-          src="https://www.youtube.com/embed/pDWj2rEqoak"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          loading="lazy"
-          title="Short 1"
-        ></iframe>
+
+      <div class="short-wrap">
+        <div class="short-inner">
+          <iframe src="https://www.youtube.com/embed/pDWj2rEqoak"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy" title="Short 1"></iframe>
+        </div>
+        <div class="short-context">
+          <div class="short-context-title" id="s1title">Short — Hook Edit</div>
+          <div class="short-context-desc" id="s1desc">Vertical format optimized for loop retention. Strong hook in the first second.</div>
+        </div>
       </div>
-      <div class="short-card">
-        <iframe
-          src="https://www.youtube.com/embed/qmajjTLbHzY"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-          loading="lazy"
-          title="Short 2"
-        ></iframe>
+
+      <div class="short-wrap">
+        <div class="short-inner">
+          <iframe src="https://www.youtube.com/embed/qmajjTLbHzY"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen loading="lazy" title="Short 2"></iframe>
+        </div>
+        <div class="short-context">
+          <div class="short-context-title" id="s2title">Short — Fast Cuts</div>
+          <div class="short-context-desc" id="s2desc">High-energy pacing with animated captions to maximize watch time on short-form.</div>
+        </div>
       </div>
+
+    </div>
+  </section>
+
+  <!-- HOW I WORK -->
+  <section class="process-section fade-up">
+    <p class="section-label" id="processLabel">Process</p>
+    <h2 class="section-title" id="processTitle">How I work</h2>
+    <div class="process-steps">
+
+      <div class="process-step">
+        <div class="process-num">01</div>
+        <div class="process-content">
+          <div class="process-title" id="p1title">Brief</div>
+          <div class="process-desc" id="p1desc">Tell me about your channel, your audience, and the video's goal. The more context you give me, the better the result — I adapt my editing style to each creator.</div>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-num">02</div>
+        <div class="process-content">
+          <div class="process-title" id="p2title">First cut</div>
+          <div class="process-desc" id="p2desc">I deliver the first cut within 5 days — already including color grading, motion graphics, and soundtrack. No half-finished work, ever.</div>
+          <span class="process-detail" id="p2detail">⚡ Up to 5 business days</span>
+        </div>
+      </div>
+
+      <div class="process-step">
+        <div class="process-num">03</div>
+        <div class="process-content">
+          <div class="process-title" id="p3title">Revisions & delivery</div>
+          <div class="process-desc" id="p3desc">Up to 2 rounds of revisions based on your feedback. Final delivery in a format optimized for YouTube — ready to upload.</div>
+          <span class="process-detail" id="p3detail">✓ Up to 2 revision rounds</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section fade-up">
+    <p class="section-label" id="testimonialsLabel">Testimonials</p>
+    <h2 class="section-title" id="testimonialsTitle">What clients say</h2>
+    <div class="testimonials-empty">
+      <div class="testimonials-empty-icon">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(0,201,200,0.6)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+      </div>
+      <h3 id="testimonialsEmptyTitle">Testimonials coming soon</h3>
+      <p id="testimonialsEmptyDesc">I'm actively working with my first clients. Testimonials will appear here as projects are completed. Want to be the first? Let's talk.</p>
     </div>
   </section>
 
@@ -735,22 +837,17 @@
     <p class="section-label" id="contactLabel">Let's work</p>
     <h2 class="section-title" id="contactTitle">Get in touch</h2>
     <div class="contact-grid">
-
-      <!-- Email -->
       <a class="contact-btn" href="mailto:leandrousoprofissional@gmail.com">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="2" y="4" width="20" height="16" rx="3"/>
-          <polyline points="2,4 12,13 22,4"/>
+          <rect x="2" y="4" width="20" height="16" rx="3"/><polyline points="2,4 12,13 22,4"/>
         </svg>
         <div>
           <span class="btn-label">Email</span>
           <span class="btn-value">leandrousoprofissional</span>
         </div>
       </a>
-
-      <!-- Twitter / X -->
       <a class="contact-btn" href="https://x.com/mysterglitch" target="_blank" rel="noopener">
-        <svg width="20" height="20" viewBox="0 0 1200 1227" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <svg width="20" height="20" viewBox="0 0 1200 1227" fill="currentColor">
           <path d="M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z"/>
         </svg>
         <div>
@@ -758,10 +855,8 @@
           <span class="btn-value">@mysterglitch</span>
         </div>
       </a>
-
-      <!-- Discord -->
-      <button class="contact-btn" onclick="copyDiscord()" id="discordBtn">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+      <button class="contact-btn" onclick="copyDiscord()">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
           <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.004.048.025.093.057.12a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
         </svg>
         <div>
@@ -769,7 +864,6 @@
           <span class="btn-value">mysterglitch_</span>
         </div>
       </button>
-
     </div>
   </section>
 
@@ -779,7 +873,7 @@
     <h2 class="section-title">Skills</h2>
     <div class="skills-grid">
 
-      <div class="skill-card">
+      <div class="skill-card highlight">
         <div class="skill-header">
           <div class="skill-icon premiere">
             <svg width="22" height="22" viewBox="0 0 36 36" fill="none">
@@ -788,21 +882,9 @@
             </svg>
           </div>
           <span class="skill-name">Adobe Premiere Pro</span>
+          <span class="skill-badge" id="mainToolBadge">Main tool</span>
         </div>
-        <p class="skill-desc" id="skill1Desc">Main tool. Professional timeline editing, color grading, audio sync, advanced effects and optimized export.</p>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-header">
-          <div class="skill-icon capcut">
-            <svg width="22" height="22" viewBox="0 0 36 36" fill="none">
-              <rect width="36" height="36" rx="8" fill="#9999ff" fill-opacity="0.15"/>
-              <text x="50%" y="56%" dominant-baseline="middle" text-anchor="middle" fill="#9999ff" font-size="12" font-weight="bold" font-family="Arial">Ae</text>
-            </svg>
-          </div>
-          <span class="skill-name">After Effects</span>
-        </div>
-        <p class="skill-desc" id="skill2Desc">Motion graphics, animated intros/outros, visual effects and custom title sequences.</p>
+        <p class="skill-desc" id="skill1Desc">Professional timeline editing, color grading, audio sync, advanced effects and optimized export. Used in every project.</p>
       </div>
 
       <div class="skill-card">
@@ -814,20 +896,28 @@
           </div>
           <span class="skill-name">Motion Graphics</span>
         </div>
-        <p class="skill-desc" id="skill3Desc">Dynamic transitions, synced text animations, intro/outro sequences and highlight-reel effects.</p>
+        <p class="skill-desc" id="skill2Desc">Dynamic transitions, synced text animations, intro/outro sequences and highlight-reel effects built inside Premiere Pro.</p>
       </div>
 
       <div class="skill-card">
-        <div class="skill-header">
-          <div class="skill-icon color">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#50B4FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20"/>
-              <circle cx="12" cy="12" r="3"/>
-            </svg>
-          </div>
-          <span class="skill-name">Cinematic Style</span>
+        <div class="skill-icon retention" style="width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+          </svg>
         </div>
-        <p class="skill-desc" id="skill4Desc">Engaging pacing, music-synced cuts, epic moments — built to keep viewers watching until the end.</p>
+        <span class="skill-name" id="skill3Name">Retention Editing</span>
+        <p class="skill-desc" id="skill3Desc" style="margin-top:8px;">Every cut is planned to keep viewers watching. Openings, pacing, and endings crafted to reduce drop-off rates.</p>
+      </div>
+
+      <div class="skill-card">
+        <div class="skill-icon color" style="width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:10px;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#50B4FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20"/>
+            <circle cx="12" cy="12" r="3"/>
+          </svg>
+        </div>
+        <span class="skill-name">Cinematic Color</span>
+        <p class="skill-desc" id="skill4Desc" style="margin-top:8px;">Music-synced cuts and color grading that give gaming content a cinematic, professional feel without losing energy.</p>
       </div>
 
     </div>
@@ -837,7 +927,7 @@
   <section class="cta-block fade-up">
     <p class="section-label" style="margin-bottom:12px;" id="ctaLabel">Ready to start?</p>
     <h2 class="section-title" style="margin-bottom:16px;" id="ctaTitle">Let's build something great</h2>
-    <p id="ctaBody">Got a channel or project that needs a boost? I'm open to new work — one-off videos, series, or long-term partnerships. Fast delivery, no headaches.</p>
+    <p id="ctaBody">Got a channel or project that needs a boost? I'm open to new work — one-off videos, series, or long-term partnerships. <strong>Fast delivery, no headaches.</strong></p>
     <div class="cta-links">
       <a class="cta-link primary" href="mailto:leandrousoprofissional@gmail.com" id="emailBtn">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><polyline points="2,4 12,13 22,4"/></svg>
@@ -853,61 +943,136 @@
 </main>
 
 <footer>© 2026 Leandro · Video Editor</footer>
-
 <div class="toast" id="toast">✓ Username copied!</div>
 
 <script>
-// ── Translations ──
 const T = {
   en: {
     badge: 'Available for projects',
-    bio: 'Professional <strong>video editor</strong> specialized in dynamic cuts, motion graphics, and cinematic storytelling.<br/>Bringing your content to the next level — one frame at a time.',
+    bio: 'Gaming video editor focused on <strong>retention</strong> — every cut, every opening, every transition built to keep your audience watching until the last second.',
     portfolioLabel: 'Portfolio',
     portfolioTitle: 'What I can do',
     shortsLabel: 'Short-form',
     shortsTitle: 'YouTube Shorts',
+    processLabel: 'Process',
+    processTitle: 'How I work',
+    p1title: 'Brief',
+    p1desc: 'Tell me about your channel, your audience, and the video\'s goal. The more context you give me, the better the result — I adapt my editing style to each creator.',
+    p2title: 'First cut',
+    p2desc: 'I deliver the first cut within 5 days — already including color grading, motion graphics, and soundtrack. No half-finished work, ever.',
+    p2detail: '⚡ Up to 5 business days',
+    p3title: 'Revisions & delivery',
+    p3desc: 'Up to 2 rounds of revisions based on your feedback. Final delivery in a format optimized for YouTube — ready to upload.',
+    p3detail: '✓ Up to 2 revision rounds',
+    testimonialsLabel: 'Testimonials',
+    testimonialsTitle: 'What clients say',
+    testimonialsEmptyTitle: 'Testimonials coming soon',
+    testimonialsEmptyDesc: 'I\'m actively working with my first clients. Testimonials will appear here as projects are completed. Want to be the first? Let\'s talk.',
     contactLabel: "Let's work",
     contactTitle: 'Get in touch',
     toolsLabel: 'Tools',
     ctaLabel: 'Ready to start?',
     ctaTitle: "Let's build something great",
-    ctaBody: "Got a channel or project that needs a boost? I'm open to new work — one-off videos, series, or long-term partnerships. Fast delivery, no headaches.",
+    ctaBody: "Got a channel or project that needs a boost? I'm open to new work — one-off videos, series, or long-term partnerships.",
     toastText: '✓ Username copied!',
     emailBtn: 'Send an email',
     discordCta: 'Message on Discord',
     discordLabel: 'Discord — click to copy',
     langPrompt: 'Choose your language',
-    skill1: 'Main tool. Professional timeline editing, color grading, audio sync, advanced effects and optimized export.',
-    skill2: 'Motion graphics, animated intros/outros, visual effects and custom title sequences.',
-    skill3: 'Dynamic transitions, synced text animations, intro/outro sequences and highlight-reel effects.',
-    skill4: 'Engaging pacing, music-synced cuts, epic moments — built to keep viewers watching until the end.',
+    mainToolBadge: 'Main tool',
+    skill1: 'Professional timeline editing, color grading, audio sync, advanced effects and optimized export. Used in every project.',
+    skill2: 'Dynamic transitions, synced text animations, intro/outro sequences and highlight-reel effects built inside Premiere Pro.',
+    skill3Name: 'Retention Editing',
+    skill3: 'Every cut is planned to keep viewers watching. Openings, pacing, and endings crafted to reduce drop-off rates.',
+    skill4: 'Music-synced cuts and color grading that give gaming content a cinematic, professional feel without losing energy.',
+    v1title: 'Gaming Edit — Dynamic Opening',
+    v1desc: 'Fast-paced cuts synced to the beat, designed to hook viewers in the first 30 seconds. Focus on energy and retention through the entire video.',
+    v1tag1: 'Gaming', v1tag2: 'Retention',
+    v2title: 'Cinematic Gaming Highlights',
+    v2desc: 'Highlight reel with cinematic color grading and custom transitions. Built to feel like a movie, not just a clip compilation.',
+    v2tag1: 'Gaming', v2tag2: 'Color Grading',
+    s1title: 'Short — Hook Edit',
+    s1desc: 'Vertical format optimized for loop retention. Strong hook in the first second.',
+    s2title: 'Short — Fast Cuts',
+    s2desc: 'High-energy pacing with animated captions to maximize watch time on short-form.',
   },
   pt: {
     badge: 'Disponível para projetos',
-    bio: 'Editor de vídeo <strong>profissional</strong> especializado em cortes dinâmicos, motion graphics e narrativa cinematográfica.<br/>Levando seu conteúdo a outro nível — um frame por vez.',
+    bio: 'Editor de vídeo de jogos focado em <strong>retenção</strong> — cada corte, cada abertura, cada transição feita para manter seu público assistindo até o último segundo.',
     portfolioLabel: 'Portfólio',
     portfolioTitle: 'O que eu faço',
     shortsLabel: 'Short-form',
     shortsTitle: 'YouTube Shorts',
+    processLabel: 'Processo',
+    processTitle: 'Como trabalho',
+    p1title: 'Briefing',
+    p1desc: 'Me conta sobre o seu canal, seu público e o objetivo do vídeo. Quanto mais contexto você der, melhor o resultado — adapto meu estilo de edição a cada criador.',
+    p2title: 'Primeiro corte',
+    p2desc: 'Entrego o primeiro corte em até 5 dias — já com color grading, motion graphics e trilha sonora. Sem trabalho pela metade, nunca.',
+    p2detail: '⚡ Até 5 dias úteis',
+    p3title: 'Revisões e entrega',
+    p3desc: 'Até 2 rodadas de ajustes baseadas no seu feedback. Entrega final em formato otimizado para o YouTube — pronto para subir.',
+    p3detail: '✓ Até 2 rodadas de revisão',
+    testimonialsLabel: 'Depoimentos',
+    testimonialsTitle: 'O que dizem os clientes',
+    testimonialsEmptyTitle: 'Depoimentos em breve',
+    testimonialsEmptyDesc: 'Estou trabalhando ativamente com meus primeiros clientes. Os depoimentos aparecerão aqui conforme os projetos forem concluídos. Quer ser o primeiro? Vamos conversar.',
     contactLabel: 'Vamos trabalhar',
     contactTitle: 'Entre em contato',
     toolsLabel: 'Ferramentas',
     ctaLabel: 'Pronto para começar?',
     ctaTitle: 'Vamos criar algo incrível',
-    ctaBody: 'Tem um canal ou projeto que precisa de um upgrade? Estou aberto para novos trabalhos — vídeos avulsos, séries ou parcerias de longo prazo. Entrega rápida, sem complicação.',
+    ctaBody: 'Tem um canal ou projeto que precisa de um upgrade? Estou aberto para novos trabalhos — vídeos avulsos, séries ou parcerias de longo prazo.',
     toastText: '✓ Nome copiado!',
     emailBtn: 'Enviar email',
     discordCta: 'Mensagem no Discord',
     discordLabel: 'Discord — clique para copiar',
     langPrompt: 'Escolha seu idioma',
-    skill1: 'Ferramenta principal. Edição profissional, color grading, sync de áudio, efeitos avançados e exportação otimizada.',
-    skill2: 'Motion graphics, intros/outros animados, efeitos visuais e sequências de título personalizadas.',
-    skill3: 'Transições dinâmicas, animações de texto sincronizadas, sequências de intro/outro e efeitos de destaque.',
-    skill4: 'Ritmo envolvente, cortes sincronizados com a música, momentos épicos — feito pra prender o espectador até o fim.',
+    mainToolBadge: 'Ferramenta principal',
+    skill1: 'Edição profissional em timeline, color grading, sync de áudio, efeitos avançados e exportação otimizada. Usada em todos os projetos.',
+    skill2: 'Transições dinâmicas, animações de texto sincronizadas, sequências de intro/outro e efeitos de destaque, todos dentro do Premiere Pro.',
+    skill3Name: 'Edição para Retenção',
+    skill3: 'Cada corte é planejado para manter o espectador assistindo. Aberturas, ritmo e encerramentos feitos para reduzir a taxa de saída.',
+    skill4: 'Cortes sincronizados com a música e color grading que dão ao conteúdo de jogos uma aparência cinematográfica e profissional sem perder a energia.',
+    v1title: 'Edit de Jogos — Abertura Dinâmica',
+    v1desc: 'Cortes rápidos sincronizados com a batida, feitos para prender o espectador nos primeiros 30 segundos. Foco em energia e retenção durante todo o vídeo.',
+    v1tag1: 'Jogos', v1tag2: 'Retenção',
+    v2title: 'Highlights Cinematográficos de Jogos',
+    v2desc: 'Compilação de highlights com color grading cinematográfico e transições personalizadas. Feito para parecer um filme, não só uma compilação de clipes.',
+    v2tag1: 'Jogos', v2tag2: 'Color Grading',
+    s1title: 'Short — Edit com Gancho',
+    s1desc: 'Formato vertical otimizado para retenção em loop. Gancho forte no primeiro segundo.',
+    s2title: 'Short — Cortes Rápidos',
+    s2desc: 'Ritmo acelerado com legendas animadas para maximizar o tempo de exibição no short-form.',
   }
 };
 
-// ── Copy Discord ──
+function applyLang(lang) {
+  const t = T[lang];
+  const ids = [
+    'badgeText','portfolioLabel','portfolioTitle','shortsLabel','shortsTitle',
+    'processLabel','processTitle','p1title','p1desc','p2title','p2desc','p2detail',
+    'p3title','p3desc','p3detail','testimonialsLabel','testimonialsTitle',
+    'testimonialsEmptyTitle','testimonialsEmptyDesc','contactLabel','contactTitle',
+    'toolsLabel','ctaLabel','ctaTitle','ctaBody','discordLabel','mainToolBadge',
+    'skill3Name','v1title','v1desc','v1tag1','v1tag2','v2title','v2desc',
+    'v2tag1','v2tag2','s1title','s1desc','s2title','s2desc'
+  ];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el && t[id] !== undefined) el.textContent = t[id];
+  });
+  document.getElementById('heroBio').innerHTML = t.bio;
+  document.getElementById('skill1Desc').textContent = t.skill1;
+  document.getElementById('skill2Desc').textContent = t.skill2;
+  document.getElementById('skill3Desc').textContent = t.skill3;
+  document.getElementById('skill4Desc').textContent = t.skill4;
+  document.getElementById('toast').textContent = t.toastText;
+  document.getElementById('langPrompt').textContent = t.langPrompt;
+  document.getElementById('emailBtn').innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><polyline points="2,4 12,13 22,4"/></svg> ${t.emailBtn}`;
+  document.getElementById('discordCta').innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.004.048.025.093.057.12a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg> ${t.discordCta}`;
+}
+
 function copyDiscord() {
   navigator.clipboard.writeText('mysterglitch_').then(() => {
     const t = document.getElementById('toast');
@@ -916,33 +1081,6 @@ function copyDiscord() {
   });
 }
 
-// ── Apply translations ──
-function applyLang(lang) {
-  const t = T[lang];
-  document.getElementById('badgeText').textContent = t.badge;
-  document.getElementById('heroBio').innerHTML = t.bio;
-  document.getElementById('portfolioLabel').textContent = t.portfolioLabel;
-  document.getElementById('portfolioTitle').textContent = t.portfolioTitle;
-  document.getElementById('shortsLabel').textContent = t.shortsLabel;
-  document.getElementById('shortsTitle').textContent = t.shortsTitle;
-  document.getElementById('contactLabel').textContent = t.contactLabel;
-  document.getElementById('contactTitle').textContent = t.contactTitle;
-  document.getElementById('toolsLabel').textContent = t.toolsLabel;
-  document.getElementById('ctaLabel').textContent = t.ctaLabel;
-  document.getElementById('ctaTitle').textContent = t.ctaTitle;
-  document.getElementById('ctaBody').textContent = t.ctaBody;
-  document.getElementById('toast').textContent = t.toastText;
-  document.getElementById('emailBtn').innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="3"/><polyline points="2,4 12,13 22,4"/></svg> ${t.emailBtn}`;
-  document.getElementById('discordCta').innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.004.048.025.093.057.12a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg> ${t.discordCta}`;
-  document.getElementById('discordLabel').textContent = t.discordLabel;
-  document.getElementById('langPrompt').textContent = t.langPrompt;
-  document.getElementById('skill1Desc').textContent = t.skill1;
-  document.getElementById('skill2Desc').textContent = t.skill2;
-  document.getElementById('skill3Desc').textContent = t.skill3;
-  document.getElementById('skill4Desc').textContent = t.skill4;
-}
-
-// ── Set language ──
 function setLang(lang) {
   document.getElementById('langOverlay').classList.add('hidden');
   const sw = document.getElementById('langSwitch');
@@ -958,172 +1096,56 @@ function openLang() {
   document.getElementById('langSwitch').style.display = 'none';
 }
 
-// ── Fade-in on scroll ──
+// Fade-in
 const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('visible');
-      observer.unobserve(e.target);
-    }
-  });
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
 }, { threshold: 0.12 });
-
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 setTimeout(() => document.querySelector('.hero').classList.add('visible'), 80);
 
-// ── Main particle canvas ──
+// Main particles
 const canvas = document.getElementById('particleCanvas');
 const ctx = canvas.getContext('2d');
-let W, H, particles = [];
-
-function resize() {
-  W = canvas.width = window.innerWidth;
-  H = canvas.height = window.innerHeight;
-}
+let W, H;
+function resize() { W = canvas.width = window.innerWidth; H = canvas.height = window.innerHeight; }
 resize();
 window.addEventListener('resize', resize);
-
-function rand(a, b) { return a + Math.random() * (b - a); }
-
+function rand(a,b) { return a + Math.random()*(b-a); }
 class Particle {
   constructor() { this.reset(); }
-  reset() {
-    this.x = rand(0, W);
-    this.y = rand(0, H);
-    this.r = rand(0.4, 1.4);
-    this.vx = rand(-0.15, 0.15);
-    this.vy = rand(-0.3, -0.05);
-    this.alpha = rand(0.1, 0.5);
-    this.color = Math.random() > 0.5 ? '0,201,200' : '0,128,255';
-  }
-  update() {
-    this.x += this.vx;
-    this.y += this.vy;
-    if (this.y < -4 || this.x < -4 || this.x > W + 4) this.reset();
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(${this.color},${this.alpha})`;
-    ctx.fill();
-  }
+  reset() { this.x=rand(0,W); this.y=rand(0,H); this.r=rand(0.4,1.4); this.vx=rand(-0.15,0.15); this.vy=rand(-0.3,-0.05); this.alpha=rand(0.1,0.5); this.color=Math.random()>0.5?'0,201,200':'0,128,255'; }
+  update() { this.x+=this.vx; this.y+=this.vy; if(this.y<-4||this.x<-4||this.x>W+4) this.reset(); }
+  draw() { ctx.beginPath(); ctx.arc(this.x,this.y,this.r,0,Math.PI*2); ctx.fillStyle=`rgba(${this.color},${this.alpha})`; ctx.fill(); }
 }
-
-for (let i = 0; i < 120; i++) particles.push(new Particle());
-
-function loop() {
-  ctx.clearRect(0, 0, W, H);
-  particles.forEach(p => { p.update(); p.draw(); });
-  requestAnimationFrame(loop);
-}
+const particles = Array.from({length:120},()=>new Particle());
+function loop() { ctx.clearRect(0,0,W,H); particles.forEach(p=>{p.update();p.draw();}); requestAnimationFrame(loop); }
 loop();
 
-// ── Lang overlay: orbiting particles ──
+// Lang overlay particles
 const lc = document.getElementById('langCanvas');
 const lctx = lc.getContext('2d');
 let LW, LH;
-
-function resizeLang() {
-  LW = lc.width = window.innerWidth;
-  LH = lc.height = window.innerHeight;
-}
+function resizeLang() { LW=lc.width=window.innerWidth; LH=lc.height=window.innerHeight; }
 resizeLang();
 window.addEventListener('resize', resizeLang);
-
-const orbs = Array.from({length: 60}, () => ({
-  x: Math.random() * window.innerWidth,
-  y: Math.random() * window.innerHeight,
-  r: rand(0.5, 2.5),
-  vx: rand(-0.4, 0.4),
-  vy: rand(-0.4, 0.4),
-  alpha: rand(0.08, 0.35),
-  color: Math.random() > 0.5 ? '0,201,200' : '0,128,255',
-  pulse: rand(0, Math.PI * 2),
-  pulseSpeed: rand(0.01, 0.04),
-}));
-
-// Shooting stars
-const stars = Array.from({length: 5}, () => makestar());
-function makestar() {
-  return {
-    x: rand(0, LW),
-    y: rand(0, LH * 0.5),
-    len: rand(60, 160),
-    speed: rand(4, 10),
-    alpha: 0,
-    active: false,
-    delay: rand(0, 300),
-  };
-}
-
-let frame = 0;
+const orbs = Array.from({length:60},()=>({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,r:rand(0.5,2.5),vx:rand(-0.4,0.4),vy:rand(-0.4,0.4),alpha:rand(0.08,0.35),color:Math.random()>0.5?'0,201,200':'0,128,255',pulse:rand(0,Math.PI*2),pulseSpeed:rand(0.01,0.04)}));
+const stars = Array.from({length:5},()=>makestar());
+function makestar() { return {x:rand(0,LW),y:rand(0,LH*0.5),len:rand(60,160),speed:rand(4,10),alpha:0,active:false,delay:rand(0,300)}; }
+let frame=0;
 function langLoop() {
-  if (!document.getElementById('langOverlay').classList.contains('hidden')) {
-    lctx.clearRect(0, 0, LW, LH);
-    frame++;
-
-    // Orbs
-    orbs.forEach(o => {
-      o.pulse += o.pulseSpeed;
-      const a = o.alpha * (0.7 + 0.3 * Math.sin(o.pulse));
-      lctx.beginPath();
-      lctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
-      lctx.fillStyle = `rgba(${o.color},${a})`;
-      lctx.fill();
-      o.x += o.vx;
-      o.y += o.vy;
-      if (o.x < 0) o.x = LW;
-      if (o.x > LW) o.x = 0;
-      if (o.y < 0) o.y = LH;
-      if (o.y > LH) o.y = 0;
-    });
-
-    // Shooting stars
-    stars.forEach((s, i) => {
-      s.delay--;
-      if (s.delay <= 0 && !s.active) { s.active = true; s.alpha = 0; s.x = rand(0, LW); s.y = rand(0, LH * 0.4); }
-      if (s.active) {
-        s.alpha = Math.min(s.alpha + 0.04, 0.7);
-        lctx.save();
-        lctx.globalAlpha = s.alpha;
-        const grad = lctx.createLinearGradient(s.x, s.y, s.x + s.len, s.y + s.len * 0.4);
-        grad.addColorStop(0, 'rgba(0,201,200,0)');
-        grad.addColorStop(1, 'rgba(0,201,200,0.9)');
-        lctx.strokeStyle = grad;
-        lctx.lineWidth = 1.5;
-        lctx.beginPath();
-        lctx.moveTo(s.x, s.y);
-        s.x += s.speed;
-        s.y += s.speed * 0.35;
-        lctx.lineTo(s.x, s.y);
-        lctx.stroke();
-        lctx.restore();
-        if (s.x > LW || s.y > LH) { stars[i] = makestar(); stars[i].delay = rand(60, 200); }
-      }
-    });
+  if(!document.getElementById('langOverlay').classList.contains('hidden')) {
+    lctx.clearRect(0,0,LW,LH); frame++;
+    orbs.forEach(o=>{o.pulse+=o.pulseSpeed;const a=o.alpha*(0.7+0.3*Math.sin(o.pulse));lctx.beginPath();lctx.arc(o.x,o.y,o.r,0,Math.PI*2);lctx.fillStyle=`rgba(${o.color},${a})`;lctx.fill();o.x+=o.vx;o.y+=o.vy;if(o.x<0)o.x=LW;if(o.x>LW)o.x=0;if(o.y<0)o.y=LH;if(o.y>LH)o.y=0;});
+    stars.forEach((s,i)=>{s.delay--;if(s.delay<=0&&!s.active){s.active=true;s.alpha=0;s.x=rand(0,LW);s.y=rand(0,LH*0.4);}if(s.active){s.alpha=Math.min(s.alpha+0.04,0.7);lctx.save();lctx.globalAlpha=s.alpha;const grad=lctx.createLinearGradient(s.x,s.y,s.x+s.len,s.y+s.len*0.4);grad.addColorStop(0,'rgba(0,201,200,0)');grad.addColorStop(1,'rgba(0,201,200,0.9)');lctx.strokeStyle=grad;lctx.lineWidth=1.5;lctx.beginPath();lctx.moveTo(s.x,s.y);s.x+=s.speed;s.y+=s.speed*0.35;lctx.lineTo(s.x,s.y);lctx.stroke();lctx.restore();if(s.x>LW||s.y>LH){stars[i]=makestar();stars[i].delay=rand(60,200);}}});
   }
   requestAnimationFrame(langLoop);
 }
 langLoop();
 
-// ── Floating text snippets ──
-const snippets = [
-  'TIMELINE / CUT / EXPORT', 'COLOR GRADE', 'MOTION GRAPHICS',
-  'PREMIERE PRO', 'AFTER EFFECTS', 'SYNC TO BEAT',
-  'FRAME BY FRAME', 'RENDER QUEUE', 'LEANDRO',
-  'CINEMATIC', 'TRANSITIONS', 'VFX', 'VIDEO EDITOR',
-];
-
+// Floaters
+const snippets = ['TIMELINE / CUT / EXPORT','COLOR GRADE','MOTION GRAPHICS','PREMIERE PRO','SYNC TO BEAT','FRAME BY FRAME','RENDER QUEUE','LEANDRO','CINEMATIC','TRANSITIONS','GAMING','VIDEO EDITOR'];
 const floatersEl = document.getElementById('langFloaters');
-snippets.forEach((text, i) => {
-  const el = document.createElement('div');
-  el.className = 'floater';
-  el.textContent = text;
-  el.style.left = (5 + (i * 11) % 88) + '%';
-  el.style.animationDuration = (18 + Math.random() * 14) + 's';
-  el.style.animationDelay = (Math.random() * 12) + 's';
-  floatersEl.appendChild(el);
-});
+snippets.forEach((text,i)=>{const el=document.createElement('div');el.className='floater';el.textContent=text;el.style.left=(5+(i*11)%88)+'%';el.style.animationDuration=(18+Math.random()*14)+'s';el.style.animationDelay=(Math.random()*12)+'s';floatersEl.appendChild(el);});
 </script>
 
 </body>
