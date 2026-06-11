@@ -264,7 +264,30 @@
       color: var(--muted);
       line-height: 1.6;
     }
-    .process-detail {
+    .process-packages {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-top: 16px;
+      font-size: 0.83rem;
+      color: var(--muted);
+      line-height: 1.6;
+      border: 1px dashed rgba(0,201,200,0.28);
+      border-radius: 14px;
+      padding: 14px 16px;
+      background: rgba(0,201,200,0.03);
+    }
+    .process-packages-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(0,201,200,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .process-packages strong { color: var(--text); display: block; margin-bottom: 3px; font-size: 0.82rem; }
       display: inline-flex;
       align-items: center;
       gap: 6px;
@@ -811,6 +834,15 @@
           <div class="process-title" id="p3title">Revisions & delivery</div>
           <div class="process-desc" id="p3desc">Up to 2 rounds of revisions based on your feedback. Final delivery in a format optimized for YouTube — ready to upload.</div>
           <span class="process-detail" id="p3detail">✓ Up to 2 revision rounds</span>
+          <div class="process-packages" id="p3packages">
+            <div class="process-packages-icon">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(0,201,200,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div>
+              <strong id="p3packagesTitle">Packages available</strong>
+              I also have packages available — Shorts, long-form videos, or a combo with both. Hit me up in private for details.
+            </div>
+          </div>
         </div>
       </div>
 
@@ -964,10 +996,12 @@ const T = {
     p3title: 'Revisions & delivery',
     p3desc: 'Up to 2 rounds of revisions based on your feedback. Final delivery in a format optimized for YouTube — ready to upload.',
     p3detail: '✓ Up to 2 revision rounds',
+    p3packages: 'I also have packages available — Shorts, long-form videos, or a combo with both. Hit me up in private for details.',
+    p3packagesTitle: 'Packages available',
     testimonialsLabel: 'Testimonials',
     testimonialsTitle: 'What clients say',
     testimonialsEmptyTitle: 'Testimonials coming soon',
-    testimonialsEmptyDesc: 'I\'m actively working with my first clients. Testimonials will appear here as projects are completed. Want to be the first? Let\'s talk.',
+    testimonialsEmptyDesc: 'I\'m just getting started — currently taking on my first clients to build my portfolio. Once projects wrap up, reviews will show up right here. Want to be part of this first wave?',
     contactLabel: "Let's work",
     contactTitle: 'Get in touch',
     toolsLabel: 'Tools',
@@ -1013,10 +1047,12 @@ const T = {
     p3title: 'Revisões e entrega',
     p3desc: 'Até 2 rodadas de ajustes baseadas no seu feedback. Entrega final em formato otimizado para o YouTube — pronto para subir.',
     p3detail: '✓ Até 2 rodadas de revisão',
+    p3packages: 'Também tenho pacotes disponíveis — Shorts, vídeos longos ou um combo com os dois. Me chama no privado para saber mais.',
+    p3packagesTitle: 'Pacotes disponíveis',
     testimonialsLabel: 'Depoimentos',
     testimonialsTitle: 'O que dizem os clientes',
     testimonialsEmptyTitle: 'Depoimentos em breve',
-    testimonialsEmptyDesc: 'Estou trabalhando ativamente com meus primeiros clientes. Os depoimentos aparecerão aqui conforme os projetos forem concluídos. Quer ser o primeiro? Vamos conversar.',
+    testimonialsEmptyDesc: 'Estou começando agora — atualmente recebendo meus primeiros clientes para construir o portfólio. Assim que os projetos forem concluídos, as avaliações aparecem aqui. Quer fazer parte dessa primeira leva?',
     contactLabel: 'Vamos trabalhar',
     contactTitle: 'Entre em contato',
     toolsLabel: 'Ferramentas',
@@ -1052,7 +1088,7 @@ function applyLang(lang) {
   const ids = [
     'badgeText','portfolioLabel','portfolioTitle','shortsLabel','shortsTitle',
     'processLabel','processTitle','p1title','p1desc','p2title','p2desc','p2detail',
-    'p3title','p3desc','p3detail','testimonialsLabel','testimonialsTitle',
+    'p3title','p3desc','p3detail','p3packages','p3packagesTitle','testimonialsLabel','testimonialsTitle',
     'testimonialsEmptyTitle','testimonialsEmptyDesc','contactLabel','contactTitle',
     'toolsLabel','ctaLabel','ctaTitle','ctaBody','discordLabel','mainToolBadge',
     'skill3Name','v1title','v1desc','v1tag1','v1tag2','v2title','v2desc',
